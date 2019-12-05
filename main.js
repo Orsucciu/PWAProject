@@ -22,12 +22,18 @@ console.log('hello depuis main');
 const technosDiv = document.querySelector('#technos');
 
 function loadTechnologies(technos) {
-    fetch('http://localhost:2201/technos')
+    fetch('https://pwa-class-cea18.firebaseio.com/technos.json')
         .then(response => {
             response.json()
                 .then(technos => {
+		    
+                    Object.values(snaps).forEach(value=>{
+                        console.log(value);
+
                     const allTechnos = technos.map(t => `<div><b>${t.name}</b> ${t.description}  <a href="${t.url}">site de ${t.name}</a> </div>`)
                             .join('');
+
+                    });
             
                     technosDiv.innerHTML = allTechnos; 
                 });
